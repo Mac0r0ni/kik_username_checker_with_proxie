@@ -75,6 +75,7 @@ def make_request(url, proxies):
 def process_usernames(q, proxies):
     while True:
         username = q.get()
+        self.client.check_username_uniqueness(username)
         url = f'https://ws2.kik.com/user/{username}'
         data = make_request(url, proxies)
         if data is not None:
